@@ -507,41 +507,52 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	public void refresh() throws BeansException, IllegalStateException {
 		synchronized (this.startupShutdownMonitor) {
 			// Prepare this context for refreshing.
-			// 为了刷新 准备上下文
+			// 为了刷新上下文做准备
 			prepareRefresh();
 
 			// Tell the subclass to refresh the internal bean factory.
+            // 告诉子类 刷新内部的 bean 工厂
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
+			// 在此上下文中准备bean 工厂
 			prepareBeanFactory(beanFactory);
 
 			try {
 				// Allows post-processing of the bean factory in context subclasses.
+				// 允许 在上下文子类 中
 				postProcessBeanFactory(beanFactory);
 
 				// Invoke factory processors registered as beans in the context.
+				// 调用注册在上下文中的工厂处理器
 				invokeBeanFactoryPostProcessors(beanFactory);
 
 				// Register bean processors that intercept bean creation.
+				// 注册 bean 处理器 拦截 bean 的创建
 				registerBeanPostProcessors(beanFactory);
 
 				// Initialize message source for this context.
+				// 为这个上下文 初始化 消息源
 				initMessageSource();
 
 				// Initialize event multicaster for this context.
+				// 为 这个上下文 初始化 事件 多路广播
 				initApplicationEventMulticaster();
 
 				// Initialize other special beans in specific context subclasses.
+				// 在 特殊的 上下文子类中 初始化其他 特殊的bean
 				onRefresh();
 
 				// Check for listener beans and register them.
+				// 检查 监听器 bean 并且 注册他们
 				registerListeners();
 
 				// Instantiate all remaining (non-lazy-init) singletons.
+				// 实力化 所有 剩下的(非懒加载) 的 单例
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
+				// 最后一步: 发布 相应 的 事件
 				finishRefresh();
 			}
 
@@ -552,12 +563,15 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				}
 
 				// Destroy already created singletons to avoid dangling resources.
+				// 销毁 已创建的 单例 以避免 资源 悬挂(占用)
 				destroyBeans();
 
 				// Reset 'active' flag.
+				// 重置 有效 标识
 				cancelRefresh(ex);
 
 				// Propagate exception to caller.
+				// 传播 异常 给 调用者
 				throw ex;
 			}
 
@@ -583,6 +597,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		}
 
 		// Initialize any placeholder property sources in the context environment
+		// 初始化 上下文 环境中 的 站位符 属性
 		initPropertySources();
 
 		// Validate that all properties marked as required are resolvable

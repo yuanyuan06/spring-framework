@@ -254,6 +254,8 @@ configure(subprojects - project(":spring-build-src")) { subproject ->
 		options.header = project.name
 		options.links(project.ext.javadocLinks)
 		options.addStringOption('Xdoclint:none', '-quiet')
+        options.encoding "UTF-8"
+        options.charSet 'UTF-8'
 
 		// suppress warnings due to cross-module @see and @link references;
 		// note that global 'api' task does display all warnings.
