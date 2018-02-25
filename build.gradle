@@ -1218,6 +1218,8 @@ configure(rootProject) {
 		options.splitIndex = true
 		options.links(project.ext.javadocLinks)
 		options.addStringOption('Xdoclint:none', '-quiet')
+        options.encoding "UTF-8"
+        options.charSet 'UTF-8'
 
 		source subprojects.collect { project ->
 			project.sourceSets.main.allJava
