@@ -1,6 +1,13 @@
 buildscript {
 	repositories {
+
+		mavenLocal()
+//		mavenCentral()
+
+		maven { url 'file:///E:/m2/repository/'} //使用file协议，本地仓库
+		maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 		maven { url "https://repo.spring.io/plugins-release" }
+
 	}
 	dependencies {
 		classpath("org.springframework.build.gradle:propdeps-plugin:0.0.7")
